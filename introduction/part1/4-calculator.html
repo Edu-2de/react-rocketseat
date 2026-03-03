@@ -200,33 +200,32 @@
         )
       }
 
-      const History =({
+      const OperationHistory =({
         children,
         className,
-        result1,
         ...props
       }) => {
         return(
           <Card className={`
-            flex flex-col gap-[1.625rem] w-[32.25rem]
-            pt-14 px-8 pb-8
+            flex flex-col w-[32.25rem]
+            py-10 px-8
           `}
           {...props}
           >
-          <div className='flex flex-col gap-3'>
+          <div className='flex flex-col'>
             <Text
               as='div'
               variant='heading'
-              className='flex items-center'
+              className='mb-4'
             >
               Histórico de Operacoes
             </Text>
-            <Text
-              as='div'
-              className='flex items-center'
-            >
-              {result1}
-            </Text>
+
+            <ul className='flex flex-col gap-3'>
+              <Text as='li'> 1 + 1 = 2 </Text>
+              <Text as='li'> 2 + 3 + 1 = 6 </Text>
+              <Text as='li'> 2 + 3 = 5 </Text>
+            </ul>
           </div>
           </Card>
         )
@@ -236,7 +235,7 @@
           return(
             <main className="flex gap-4 py-28 px-4">
               <Calculator/>
-              <History result1='1 + 1 = 2' />
+              <OperationHistory result1='1 + 1 = 2' />
             </main>
           )
       }
