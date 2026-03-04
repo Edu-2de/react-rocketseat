@@ -40,19 +40,49 @@
 
     <script type="text/babel">
 
-    const textVariants = {
-      default: 'text-(--text)',
-      muted: 'text-(--text-secondary)',
-      primary: 'text-(--primary)',
-    }
+      const colorVariants = {
+        default: 'text-(--text)',
+        muted: 'text-(--text-secondary)',
+        purple: 'text-(--purple)',
+        green: 'text-(--green)',
+        blue: 'text-(--blue)',
+        red: 'text-(--red)',
+        dark: 'text-(--darkpurple)',
+      }
 
-    const textSizes = {
-      sm: 'text-sm',
-      md: 'text-base',
-      lg: 'text-xl',
-      xl: 'text-2xl',
-      '2xl': 'text-3xl',
-    }
+      const textSizes = {
+        sm: 'text-sm',
+        md: 'text-base',
+        lg: 'text-xl',
+        xl: 'text-2xl',
+        '2xl': 'text-3xl',
+      }
+
+      const bgVariants = {
+        default: 'bg-(--background)',
+        white: 'bg-white',
+        purple: 'bg-(--purple)',
+        green: 'bg-(--green)',
+      }
+
+      const Card = ({
+        variant = 'default',
+        className = '',
+        children,
+        ...props
+      }) => {
+        return (
+          <div
+            className={`
+              ${bgVariants[variant]}
+              ${className}
+            `}
+            {...props}
+          >
+            {children}
+          </div>
+        )
+      }
 
 
       const Text = ({
@@ -67,8 +97,7 @@
           React.createElement(
             as,
             {
-              className : `${textVariants[variant]}
-              ${className ? className : ''}`,
+              className: `${colorVariants[variant]} ${textSizes[size]} ${className || ''}`,
               ...props,
             },
             children
@@ -77,13 +106,45 @@
       }
 
       const SideBar = ({
-        children,
-        className,
-        ...props
+        children
       }) => {
         return(
-          <div>
+          <Card className="w-[20%] h-screen flex flex-col p-6 border-r border-gray-200">
+            <Text size='xl' className='font-bold mb-10'>Payd</Text>
+            {children}
+          </Card>
+        )
+      }
 
+      const NavGroup = ({ title, children }) => {
+        return (
+          <div className="flex flex-col mb-6">
+            {/* Cabeçalho do Grupo */}
+            <div className="flex items-center justify-between mb-4 cursor-pointer">
+              <Text variant="muted" size="sm" className="font-bold uppercase tracking-wider">
+                {title}
+              </Text>
+              <Text variant="muted" size="sm">▲</Text>
+            </div>
+
+            {/* Lista de Itens */}
+            <div className="flex flex-col gap-1">
+              {children}
+            </div>
+          </div>
+        )
+      }
+
+      const NavItem = ({ children, icon, active = false }) => {
+        return (
+          <div className={`
+            flex items-center gap-3 p-2 rounded-lg cursor-pointer transition-colors
+            ${active ? 'bg-white shadow-(--shadow) border-l-4 border-(--darkpurple)' : 'hover:bg-gray-100'}
+          `}>
+            <div className="opacity-50">{icon}</div>
+            <Text variant={active ? 'default' : 'muted'} size="md">
+              {children}
+            </Text>
           </div>
         )
       }
@@ -92,12 +153,22 @@
       const App = () => {
           return(
             <main className={`
-              py-28 px-4 sm:px-10
-              flex flex-col sm:flex-row
-              items-center sm:items-stretch
-              gap-2
-            `}>
 
+            `}>
+            <SideBar>
+              <NavGroup title="Payments">
+                <NavItem icon="🔄">Transactions</NavItem>
+                <NavItem icon="👥">Customers</NavItem>
+                <NavItem icon="💳">Payouts</NavItem>
+              </NavGroup>
+
+              <hr className="my-6 border-gray-100" />
+
+              <NavGroup title="Commerce">
+                <NavItem icon="🔗">Referrals</NavItem>
+                <NavItem icon="⚙️">Settings</NavItem>
+              </NavGroup>
+            </SideBar>
             </main>
           )
       }
