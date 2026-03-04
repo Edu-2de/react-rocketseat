@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modelo</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+
+      const Counter = () => {
+        const [counter, setCounter] = React.useState(0);
+
+        if(counter>30){
+          return <p>Maior que 30</p>
+        }
+
+        return(
+          <>
+            <p>Contador: {counter}</p>
+
+            <p>{counter > 10 ? 'Maior que 10' : 'menor ou igual a 10'}</p>
+            <p>{counter > 20 && 'Maior que 20'}</p>
+
+
+
+            <button
+              type="button"
+              onClick={() => setCounter(prev => prev + 1)}
+            >
+              +
+            </button>
+
+            <button
+            type="button"
+            onClick={() => setCounter(prev => prev - 1)}
+            >
+              -
+            </button>
+          </>
+        )
+      }
+
+      const App = () => {
+        return(
+          <main className='p-3'>
+            <Counter/>
+          </main>
+        )
+      }
+
+      ReactDOM.createRoot(document.getElementById('root')).render(<App/>)
+    </script>
+  </body>
+</html>
