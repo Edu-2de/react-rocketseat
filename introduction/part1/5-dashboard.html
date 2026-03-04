@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+
+    <title>Rocketseat - React.js - Fundamentos</title>
+
+    <style type="text/tailwindcss">
+
+      @theme {
+       --text: #484a4f;
+       --text-secondary: #828282;
+
+       --purple: #ecccff;
+       --green: #a6d997;
+       --blue: #72c8cc;
+       --red: #ff7576;
+       --darkpurple: #8e4b6e;
+
+       --background: #f9f9f9;
+
+       --font-sans: 'Rubik', sans-serif;
+      }
+
+    </style>
+  </head>
+
+  <body class=" min-h-screen bg-white text-(--text) font-(--font-sans)">
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+
+    const textVariants = {
+      default: 'text-(--text)',
+      muted: 'text-(--text-secondary)',
+      primary: 'text-(--primary)',
+    }
+
+    const textSizes = {
+      sm: 'text-sm',
+      md: 'text-base',
+      lg: 'text-xl',
+      xl: 'text-2xl',
+      '2xl': 'text-3xl',
+    }
+
+
+      const Text = ({
+        as = 'span',
+        variant = 'default',
+        size = 'md',
+        children,
+        className,
+        ...props
+      }) => {
+        return(
+          React.createElement(
+            as,
+            {
+              className : `${textVariants[variant]}
+              ${className ? className : ''}`,
+              ...props,
+            },
+            children
+          )
+        )
+      }
+
+      const SideBar = ({
+        children,
+        className,
+        ...props
+      }) => {
+        return(
+          <div>
+
+          </div>
+        )
+      }
+
+
+      const App = () => {
+          return(
+            <main className={`
+              py-28 px-4 sm:px-10
+              flex flex-col sm:flex-row
+              items-center sm:items-stretch
+              gap-2
+            `}>
+
+            </main>
+          )
+      }
+
+      ReactDOM.createRoot(document.getElementById('root')).render(
+        <App/>
+      )
+    </script>
+  </body>
+
+</html>
