@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modelo</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- Link para o tailwind -->
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <!-- Sempre necessário ter esses links para usar o react. (Caso nao use um package.json por exemplo...) -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+      
+      const App = () => {
+        return(
+          <main className='p-3'>
+            ...
+          </main>
+        )
+      }
+
+      ReactDOM.createRoot(document.getElementById('root').render(<App/>))
+    </script>
+  </body>
+</html>
