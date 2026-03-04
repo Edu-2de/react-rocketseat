@@ -8,19 +8,40 @@
   <body>
     <div id="root"></div>
 
-    <!-- Link para o tailwind -->
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-    <!-- Sempre necessário ter esses links para usar o react. (Caso nao use um package.json por exemplo...) -->
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <script type="text/babel">
 
+      const Counter = () => {
+        const [counter, setCounter] = React.useState(0);
+
+        return(
+          <>
+            <p>Contador: {counter}</p>
+            
+            <button
+              type="button"
+              onClick={() => setCounter(prev => prev + 1)}
+            >
+              +
+            </button>
+
+            <button
+            type="button"
+            onClick={() => setCounter(prev => prev - 1)}
+            >
+              -
+            </button>
+          </>
+        )
+      }
+
       const App = () => {
         return(
           <main className='p-3'>
-            ...
+            <Counter/>
           </main>
         )
       }
