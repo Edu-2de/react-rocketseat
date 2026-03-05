@@ -291,7 +291,11 @@
         className,
         ...props
       }) => {
+
+        const {history} = React.useContext(CalculatorContext)
+
         return(
+
           <Card className={`
             flex flex-col w-full
             py-10 px-8
@@ -308,9 +312,14 @@
             </Text>
 
             <ul className='flex flex-col gap-3'>
-              <Text as='li'> 1 + 1 = 2 </Text>
-              <Text as='li'> 2 + 3 + 1 = 6 </Text>
-              <Text as='li'> 2 + 3 = 5 </Text>
+              {
+                history.map(
+                  (value, index) =>
+                  <Text key={`item-${index}`} as='li'>{value}</Text>
+                )
+              }
+
+              <li key='' ></li>
             </ul>
           </div>
           </Card>
