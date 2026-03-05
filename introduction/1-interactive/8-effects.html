@@ -16,17 +16,31 @@
 
       const Counter = () => {
         const [counter, setCounter] = React.useState(0);
+        const [name, setName] = React.useState('');
 
         React.useEffect(() => {
           console.log('Componente montado!')
         }, [])
 
         React.useEffect(() => {
-          console.log(`Contador atualizado: ${counter}`)
+          if (counter > 0){
+            console.log(`Contador atualizado: ${counter}`)
+          }
         }, [counter])
+
+        React.useEffect(() => {
+          if (name != ''){
+            console.log(`Nome: ${name}`)
+          }
+        }, [name])
 
         return(
           <>
+            <div>
+              <label>Nome: </label>
+              <input onChange={(e) => setName(e.target.value)} type="text"/>
+            </div>
+
             <p>Contador: {counter}</p>
 
             <button
