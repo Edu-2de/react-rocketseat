@@ -205,7 +205,7 @@
           if(result){
             setOperation(
               isNaN(input)
-              ? `${result}${input}`
+              ? `${result}${input === ',' ? '': ' '}${input}`
               : input
             );
             setResult('');
