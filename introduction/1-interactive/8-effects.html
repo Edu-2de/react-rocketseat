@@ -20,6 +20,10 @@
 
         React.useEffect(() => {
           console.log('Componente montado!')
+
+          return () => {
+            console.log('Componente Desmontado!')
+          }
         }, [])
 
         React.useEffect(() => {
@@ -61,8 +65,14 @@
       }
 
       const App = () => {
+
+        const [show, setShow] = React.useState(true)
+
+
+
         return(
           <main className='p-3'>
+            <button onClick={() => setShow(!show)} type="button">Mostrar/ Ocular Contador</button>
             <Counter/>
           </main>
         )
