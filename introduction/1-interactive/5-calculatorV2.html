@@ -194,15 +194,25 @@
         const [result, setResult] = React.useState('')
 
         const handleInputClick = (input) => {
-          setOperation(`${operation} ${input}`)
 
-          if(input == 'CE'){
-            setOperation('')
+          if(input === 'CE'){
+            setResult('')
+            return;
           }
 
-          if(input == '='){
-            setResult()
+          if(input === '='){
+            const operationResult = eval(operation.replace(/,/g))
+            setResult(`${result} ${operationResult}`)
+            return;
           }
+
+          if(input === ',' && !operation.endsWith(',')){
+            setOperation(`${operation},`);
+            return;
+          }
+
+          setOperation(`${operation}${operation.endsWith(',') ? '': ' '}${input}`)
+
         }
 
         return(
