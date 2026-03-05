@@ -195,6 +195,18 @@
 
         const handleInputClick = (input) => {
 
+          if(input === 'C'){
+            setOperation('');
+            setResult('');
+            return;
+          }
+
+          if(input === 'CE'){
+            setResult('')
+            setOperation(operation.slice(0, -1));
+            return;
+          }
+
           if(input === '='){
             const operationResult = eval(operation.replace(/,/g, '.'))
             const parsedResult = operationResult.toString()?.replace(/\./g, ',')
@@ -205,7 +217,7 @@
           if(result){
             setOperation(
               isNaN(input)
-              ? `${result}${input === ',' ? '': ' '}${input}`
+              ? `${result}${input}`
               : input
             );
             setResult('');
@@ -217,21 +229,9 @@
             return;
           }
 
-          if(input === 'C'){
-            setOperation('');
-            setResult('');
-            return;
-          }
 
-          if(input === 'CE'){
-            if(result){
-              setResult('')
-            }
-            setOperation(operation.slice(0, -2));
-            return;
-          }
 
-          setOperation(`${operation}${operation.endsWith(',') ? '': ' '}${input}`)
+          setOperation(`${operation}${input}`)
 
         }
 
