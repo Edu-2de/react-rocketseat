@@ -212,6 +212,7 @@
 
         const [operation, setOperation] = React.useState('');
         const [result, setResult] = React.useState('')
+        const { updateHistory } = React.useContext(CalculatorContext)
 
         const handleInputClick = (input) => {
 
@@ -230,7 +231,8 @@
           if(input === '='){
             const operationResult = eval(operation.replace(/,/g, '.'))
             const parsedResult = operationResult.toString()?.replace(/\./g, ',')
-            setResult(`${result} ${parsedResult}`)
+            setResult(parsedResult)
+            updateHistory(operation, parsedResult)
             return;
           }
 
@@ -323,8 +325,10 @@
               items-center sm:items-stretch
               gap-2
             `}>
-              <Calculator/>
-              <OperationHistory result1='1 + 1 = 2' />
+              <CalculatorProvider>
+                <Calculator/>
+                <OperationHistory result1='1 + 1 = 2' />
+              </CalculatorProvider>
             </main>
           )
       }
