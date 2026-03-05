@@ -164,9 +164,20 @@
       }) => {
 
         const[history, setHistory] = React.useState([]);
+        const historyStorageKey = 'history';
 
         const updateHistory = (operation, parsedResult) => {
-          setHistory((prev) =>[...prev, `${operation}=${parsedResult}`])
+
+          setHistory((prev) => {
+
+            const updateHistory = [
+              ...prev, `${operation}=${parsedResult}`
+            ]
+
+            localStorage.setItem(
+              historyStorageKey, JSON.stringify
+            )
+          })
         }
 
         return(
