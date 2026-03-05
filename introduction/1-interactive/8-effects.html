@@ -17,10 +17,18 @@
       const Counter = () => {
         const [counter, setCounter] = React.useState(0);
 
+        React.useEffect(() => {
+          console.log('Componente montado!')
+        }, [])
+
+        React.useEffect(() => {
+          console.log('Contador atualizado! :')
+        }, [counter])
+
         return(
           <>
             <p>Contador: {counter}</p>
-            
+
             <button
               type="button"
               onClick={() => setCounter(prev => prev + 1)}
