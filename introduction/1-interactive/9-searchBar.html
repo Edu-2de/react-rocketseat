@@ -86,7 +86,7 @@
       }) => {
         return(
           <div className={`
-            w-120 h-20
+            w-120 h-20 min-h-20
             border-2 border-gray-300 rounded-md
             flex justify-center items-center py-2
             gap-2
@@ -106,20 +106,70 @@
         )
       }
 
-      const searchItens = {
-        [
-          icon = '@',
-          name = 'placa-de-video'
-        ],
-      }
+      const searchItens = [
+
+          {
+            icon :'@',
+            name : 'placa-de-video'
+          },
+          {
+            icon :'#',
+            name : 'processador'
+          },
+          {
+            icon :'$',
+            name : 'mouse'
+          },
+          {
+            icon :'%',
+            name : 'teclado'
+          },
+          {
+            icon :'^',
+            name : 'monitor'
+          },
+
+
+      ]
 
       const SearchBar = ({
         children
       }) => {
         return(
-          <div>
 
+          <div className={`
+            w-full min-h-min
+            flex items-center justify-center flex-col
+            gap-5
+          `}
+          >
+            <div className={`
+              w-120 h-16
+              rounded-full border-2 border-gray-700
+              flex items-center justify-center
+            `}
+            >
+              <input className={`
+                flex text-center
+                outline-0 focus:text-left
+              `}
+              type="text"
+              placeholder='Digite Algo...'/>
+            </div>
+
+            <div className={`
+              max-h-60 w-120
+              rounded-md
+              flex gap-2 overflow-y-auto
+              flex-col overflow-x-hidden
+            `}>
+              {searchItens.map((peca) =>(
+                <Card key={peca.name} icon={peca.icon}>{peca.name}</Card>
+              ))}
+            </div>
           </div>
+
+
         )
       }
 
@@ -127,7 +177,7 @@
       const App = () => {
         return(
           <main className="min-h-screen w-full flex items-center justify-center gap-2">
-            <Card></Card>
+            <SearchBar/>
           </main>
         )
       }
