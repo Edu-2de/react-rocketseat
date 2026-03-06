@@ -135,8 +135,10 @@
       const SearchBar = ({
         children
       }) => {
-        return(
+        const [search, setSearch] = React.useState('')
 
+
+        return(
           <div className={`
             w-full min-h-min
             flex items-center justify-center flex-col
@@ -154,6 +156,8 @@
                 outline-0 focus:text-left
               `}
               type="text"
+              value={search}
+              onChange={e => setSearch(e.target.value ) }
               placeholder='Digite Algo...'/>
             </div>
 
@@ -163,9 +167,21 @@
               flex gap-2 overflow-y-auto
               flex-col overflow-x-hidden
             `}>
-              {searchItens.map((peca) =>(
-                <Card key={peca.name} icon={peca.icon}>{peca.name}</Card>
-              ))}
+              {search === '' ? (
+                <p className="text-gray-400 text-center mt-4">
+                  Digite o nome de uma peça para buscar...
+                </p>
+              ) : (
+                searchItens
+                  .filter((peca) =>
+                    peca.name.toLowerCase().includes(search.toLowerCase())
+                  )
+                  .map((peca) => (
+                    <Card key={peca.name} icon={peca.icon}>
+                      {peca.name}
+                    </Card>
+                  ))
+              )}
             </div>
           </div>
 
