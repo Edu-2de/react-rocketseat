@@ -18,4 +18,8 @@
   --color-pink-light: #E9CCE1;
   --color-pink-base: #C257A4;
   --color-pink-dark: #884074;
+
+  --font-sans: 'Cairo', san-serif;
+
+  --shadow-sm: 0px 4px 8px 0px rgba(54, 23, 45, 0.05)
 }
