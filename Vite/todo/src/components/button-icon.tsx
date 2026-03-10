@@ -32,9 +32,16 @@ export const buttonIconIconVariants = cva('transition', {
             primary: 'fill-white',
             secondary: 'fill-pink-base group-hover:fill-white',
             tertiary: 'fill-gray-300 group-hover:fill-gray-400'
+        },
+        size: {
+            sm: 'w-4 h-4'
         }
+    },
+    defaultVariants: {
+        variant: 'primary',
+        size: 'sm'
     }
-}, )
+})
 
 interface ButtonIconProps extends
     VariantProps<typeof buttonIconVariants>,
@@ -43,16 +50,24 @@ interface ButtonIconProps extends
 }
 
 export const ButtonIcon = ({
-    variants,
+    variant,
     size,
     disabled,
     className,
     icon: IconComponent,
     ...props
-}) => {
+}: ButtonIconProps) => {
     return(
-        <button>
-            <Icon svg={}></Icon>
+        <button className={buttonIconVariants({
+            variant,
+            size,
+            disabled,
+            className
+        })}
+        {...props}
+        >
+
+            <Icon className={buttonIconIconVariants({variant, size})} svg={IconComponent}></Icon>
         </button>
     )
 }
