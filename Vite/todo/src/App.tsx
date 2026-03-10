@@ -56,8 +56,10 @@ export default function App() {
           <Button icon={PlusIcon}>Nova Tarefa</Button>
         </div>
 
-        <div>
-          <ButtonIcon variant={"tertiary"} icon={TrashIcon} ></ButtonIcon>
+        <div className="flex gap-2 mt-4">
+          <ButtonIcon icon={TrashIcon}/>
+          <ButtonIcon variant={"secondary"} icon={TrashIcon}/>
+          <ButtonIcon variant={"tertiary"} icon={TrashIcon}/>
         </div>
 
       </div>
