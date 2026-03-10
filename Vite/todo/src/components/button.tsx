@@ -75,7 +75,7 @@ export const Button = ({
                 className={buttonIconVariants({variant, size})}
             />}
             <Text variant='body-md-bold'
-                className={buttonTextVariants({variant, })}>
+                className={buttonTextVariants({variant})}>
                 {children}
             </Text>
 
