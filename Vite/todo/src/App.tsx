@@ -3,6 +3,7 @@ import { Icon } from "./components/icon"
 import { Badge } from "./components/badge";
 import { Button } from "./components/button";
 import { ButtonIcon } from "./components/button-icon";
+import { InputText } from "./components/input-text";
 
 import TrashIcon from './assets/icons/Trash.svg?react';
 import CheckIcon from './assets/icons/Check.svg?react';
@@ -15,7 +16,7 @@ import XIcon from './assets/icons/X.svg?react';
 export default function App() {
 
   return (
-    <div className="grid gap-3">
+    <div className="grid gap-5">
       <div className='flex flex-col gap-1'>
 
         <Text
@@ -25,17 +26,8 @@ export default function App() {
           Olá mundo!
         </Text>
 
-        <Text
-          className='text-green-base'
-        >
-          Olá mundo!
-        </Text>
-
-        <Text
-          variant={"body-md-bold"}
-        >
-          Olá mundo!
-        </Text>
+        <Text className='text-green-base'>Olá mundo!</Text>
+        <Text variant={"body-md-bold"}>Olá mundo!</Text>
 
         <div className="flex gap-1">
           <Icon svg={TrashIcon} className="fill-pink-base" />
@@ -56,10 +48,14 @@ export default function App() {
           <Button icon={PlusIcon}>Nova Tarefa</Button>
         </div>
 
-        <div className="flex gap-2 mt-4">
+        <div>
           <ButtonIcon icon={TrashIcon}/>
           <ButtonIcon variant={"secondary"} icon={TrashIcon}/>
           <ButtonIcon variant={"tertiary"} icon={TrashIcon}/>
+        </div>
+
+        <div>
+          <InputText></InputText>
         </div>
 
       </div>
