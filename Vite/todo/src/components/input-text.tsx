@@ -1,5 +1,6 @@
 import React from "react";
 import { cva, type VariantProps, cx } from "class-variance-authority";
+import { textVariants } from "./text.variants";
 
 
 export const inputTextVariants = cva(`
@@ -21,7 +22,7 @@ export const inputTextVariants = cva(`
 })
 
 interface InputTextProps extends VariantProps<typeof inputTextVariants>,
-    Omit<React.ComponentProps<'input'>, 'size'> {}
+    Omit<React.ComponentProps<'input'>, 'size' | 'disabled'> {}
 
 
 export const InputText = ({
@@ -32,11 +33,11 @@ export const InputText = ({
 }: InputTextProps) => {
     return(
         <input
-            className={inputTextVariants({
-                size,
-                disabled,
+            className={cx(
+                inputTextVariants({size,disabled,}),
+                textVariants(),
                 className
-            })}
+            )}
             type="text"
             {...props}
             />
