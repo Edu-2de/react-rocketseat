@@ -5,8 +5,8 @@ import CheckIcon from '../assets/icons/Check.svg?react'
 
 export const inputCheckboxWrapperVariants = cva(
     `
-    inline-flex items-center justify-center
-    cursor-pointer relative group
+        inline-flex items-center justify-center
+        relative group
     `
 )
 
@@ -14,7 +14,7 @@ export const inputCheckboxVariants = cva(
     `
         appearance-none peer flex items-center
         justify-center border-2 border-solid transition
-        overflow-hidden border-green-base
+        overflow-hidden border-green-base cursor-pointer
         hover:border-green-dark hover:bg-green-dark/20
         checked:border-green-base checked:bg-green-base
         group-hover:checked:border-green-dark
