@@ -1,5 +1,6 @@
 import Text from "./components/text";
 import { Icon } from "./components/icon"
+import { Badge } from "./components/badge";
 
 import TrashIcon from './assets/icons/Trash.svg?react';
 import CheckIcon from './assets/icons/Check.svg?react';
@@ -42,6 +43,11 @@ export default function App() {
           <Icon svg={PencilIcon} className="fill-green-base" />
           <Icon svg={XIcon} className="fill-green-base" />
           <Icon svg={ClipBoardIcon} className="fill-pink-dark" />
+        </div>
+
+        <div>
+          <Badge variant='secondary'>5</Badge>
+          <Badge variant='primary'>2 de 5</Badge>
         </div>
 
       </div>
