@@ -29,7 +29,9 @@ export const buttonIconVariants = cva(`
 export const buttonIconIconVariants = cva('transition', {
     variants: {
         variant: {
-            primary: 'fill-white'
+            primary: 'fill-white',
+            secondary: 'fill-pink-base group-hover:fill-white',
+            tertiary: 'fill-gray-300 group-hover:fill-gray-400'
         }
     }
 }, )
