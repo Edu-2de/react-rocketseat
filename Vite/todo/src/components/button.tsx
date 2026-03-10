@@ -1,5 +1,6 @@
 import React from "react";
-import type { Icon } from "./icon";
+import { Icon } from "./icon";
+import Text from "./text";
 import { cva, type VariantProps } from "class-variance-authority";
 
 export const buttonVariants = cva(`
@@ -24,6 +25,16 @@ export const buttonVariants = cva(`
     }
 });
 
+export const buttonTextVariants = cva('', {
+    variants: {
+        variant: {
+            primary: 'text-gray-400'
+        }
+    },
+    defaultVariants: {
+        variant: 'primary'
+    }
+})
 
 export const buttonIconVariants = cva('transition', {
     variants: {
@@ -56,6 +67,18 @@ export const Button = ({
     ...props
 }: ButtonProps) => {
     return(
-        <button className={buttonVariants({variant, size, disabled, className})} {...props}>{children}</button>
+        <button className={ buttonVariants({variant, size, disabled, className})}
+            {...props}
+        >
+            {IconComponent && <Icon
+                svg={IconComponent}
+                className={buttonIconVariants({variant, size})}
+            />}
+            <Text variant='body-md-bold'
+                className={buttonTextVariants({variant, })}>
+                {children}
+            </Text>
+
+        </button>
     )
 }

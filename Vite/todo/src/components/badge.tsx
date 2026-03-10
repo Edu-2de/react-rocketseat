@@ -43,9 +43,10 @@ export const Badge = ({
     size,
     className,
     children,
+    ...props
 }: BadgeProps) => {
     return(
-        <div className={badgeVariants({variant, size, className})}>
+        <div className={badgeVariants({variant, size, className})} {...props}>
             <Text
                 variant='body-sm-bold'
                 className={badgeTextVariants({variant})}
