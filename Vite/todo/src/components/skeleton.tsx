@@ -1,4 +1,4 @@
-import { cva } from "class-variance-authority";
+import { cva, type VariantProps } from "class-variance-authority";
 
 
 export const skeletonVariants = cva(
@@ -12,7 +12,28 @@ export const skeletonVariants = cva(
                 lg: 'rounded-lg',
                 full: 'rounded-full'
             }
+        },
+        defaultVariants: {
+            rounded: 'lg'
         }
     }
 )
 
+interface SkeletonProps extends VariantProps<typeof skeletonVariants>,
+    React.ComponentProps<'div'> {}
+
+export const Skeleton = ({
+    rounded,
+    className,
+    ...props
+}: SkeletonProps) => {
+    return(
+        <div
+            className={skeletonVariants({
+                rounded,
+                className
+            })}
+            {...props}
+        />
+    )
+}
