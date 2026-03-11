@@ -1,4 +1,4 @@
-import { NavLink } from "react-router"
+import { NavLink, Outlet } from "react-router"
 import { Container } from "../components/container"
 import Text from "../components/text"
 
@@ -8,15 +8,16 @@ export const LayoutMain = () => {
         <>
             <Container
                 as = 'header'
+                className='mt-3 md:mt-20'
             >
                 Olá Mundo!
             </Container>
 
-            <main>
-                Conteudo Principal!
+            <main className="mt-4 md:mt-8">
+                <Outlet />
             </main>
 
-            <footer>
+            <footer className="my-5 md:my-10">
                 <nav className="flex items-center justify-center gap-4">
                     <NavLink to='/'>
                         <Text variant = 'body-sm-bold'
@@ -28,7 +29,7 @@ export const LayoutMain = () => {
                     <NavLink to='/components'>
                         <Text variant = 'body-sm-bold'
                             className="text-gray-300">
-                            Coomponentes
+                            Componentes
                         </Text>
                     </NavLink>
 

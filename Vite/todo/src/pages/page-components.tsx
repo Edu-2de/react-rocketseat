@@ -9,13 +9,13 @@ import { InputText } from "../components/input-text"
 import  { Skeleton } from "../components/skeleton"
 import Text from '../components/text'
 
-import TrashIcon from './assets/icons/Trash.svg?react';
-import CheckIcon from './assets/icons/Check.svg?react';
-import ClipBoardIcon from './assets/icons/ClipboardText.svg?react';
-import PencilIcon from './assets/icons/Pencil.svg?react';
-import PlusIcon from './assets/icons/Plus.svg?react';
-import SpinnerIcon from './assets/icons/Spinner.svg?react';
-import XIcon from './assets/icons/X.svg?react';
+import TrashIcon from '../assets/icons/Trash.svg?react';
+import CheckIcon from '../assets/icons/Check.svg?react';
+import ClipBoardIcon from '../assets/icons/ClipboardText.svg?react';
+import PencilIcon from '../assets/icons/Pencil.svg?react';
+import PlusIcon from '../assets/icons/Plus.svg?react';
+import SpinnerIcon from '../assets/icons/Spinner.svg?react';
+import XIcon from '../assets/icons/X.svg?react';
 
 
 export const PageComponents = () => {

@@ -1,15 +1,15 @@
 import { BrowserRouter, Route, Routes } from "react-router";
 import { PageComponents } from "./pages/page-components";
+import { LayoutMain } from "./pages/layout-main";
 
 export default function App() {
 
   return(
     <BrowserRouter>
       <Routes>
-
-        <Route path="/components" element={<PageComponents/>} />
-
-
+        <Route element={<LayoutMain/>}>
+          <Route path="/components" element={<PageComponents/>} />
+        </Route>
       </Routes>
     </BrowserRouter>
   )
