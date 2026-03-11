@@ -1,6 +1,7 @@
 import React from "react"
 import Text from "./text"
-import { cva, type VariantProps } from "class-variance-authority"
+import { cva, cx, type VariantProps } from "class-variance-authority"
+import { Skeleton } from "./skeleton";
 
 export const badgeVariants = cva(
     'inline-flex items-center justify-center rounded-full',
@@ -33,9 +34,20 @@ export const badgeTextVariants = cva('', {
     }
 })
 
+export const badgeSkeletonVariants = cva('', {
+    variants: {
+        size: {
+            sm: 'w-5 h-5'
+        }
+    },
+    defaultVariants: {
+        size: 'sm'
+    }
+})
+
 interface BadgeProps extends React.ComponentProps<'div'>,
     VariantProps<typeof badgeVariants> {
-
+        loading?: boolean
     }
 
 export const Badge = ({
@@ -43,8 +55,22 @@ export const Badge = ({
     size,
     className,
     children,
+    loading,
     ...props
 }: BadgeProps) => {
+
+    if(loading){
+        return(
+            <Skeleton
+                rounded={'full'}
+                className={cx(
+                    badgeVariants({variant}),
+                    badgeSkeletonVariants({size})
+                )}
+            />
+        )
+    }
+
     return(
         <div className={badgeVariants({variant, size, className})} {...props}>
             <Text
