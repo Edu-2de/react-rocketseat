@@ -24,8 +24,8 @@ export default function App() {
 
   return (
     <Container>
-      <div className="grid gap-5">
-        <div className='flex flex-col gap-1'>
+
+        <div className='flex flex-col gap-2'>
 
           <Text
             variant={'body-sm-bold'}
@@ -81,7 +81,7 @@ export default function App() {
           </div>
 
         </div>
-      </div>
+
     </Container>
   )
 }
