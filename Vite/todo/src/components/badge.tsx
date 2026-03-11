@@ -8,6 +8,7 @@ export const badgeVariants = cva(
     {
         variants: {
             variant: {
+                none: '',
                 primary: 'bg-green-light',
                 secondary: 'bg-pink-light'
             },
@@ -25,6 +26,7 @@ export const badgeVariants = cva(
 export const badgeTextVariants = cva('', {
     variants: {
         variant: {
+            none: '',
             primary: 'text-green-dark',
             secondary: 'text-pink-dark'
         }
@@ -37,7 +39,7 @@ export const badgeTextVariants = cva('', {
 export const badgeSkeletonVariants = cva('', {
     variants: {
         size: {
-            sm: 'w-5 h-5'
+            sm: 'w-6 h-6'
         }
     },
     defaultVariants: {
@@ -64,7 +66,7 @@ export const Badge = ({
             <Skeleton
                 rounded={'full'}
                 className={cx(
-                    badgeVariants({variant}),
+                    badgeVariants({variant: 'none'}),
                     badgeSkeletonVariants({size})
                 )}
             />

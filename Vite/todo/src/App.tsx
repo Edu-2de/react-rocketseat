@@ -47,7 +47,7 @@ export default function App() {
             <Icon svg={ClipBoardIcon} className="fill-pink-dark" />
           </div>
 
-          <div className="space-x-2">
+          <div className="flex gap-1 items-center">
             <Badge variant='secondary'>5</Badge>
             <Badge variant='primary'>2 de 5</Badge>
             <Badge loading> 5</Badge>
@@ -61,6 +61,7 @@ export default function App() {
             <ButtonIcon icon={TrashIcon}/>
             <ButtonIcon variant={"secondary"} icon={TrashIcon}/>
             <ButtonIcon variant={"tertiary"} icon={TrashIcon}/>
+            <ButtonIcon loading icon={TrashIcon}/>
           </div>
 
           <div>
