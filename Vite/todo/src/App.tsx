@@ -70,6 +70,7 @@ export default function App() {
 
           <div>
             <InputCheckbox/>
+            <InputCheckbox loading/>
           </div>
 
           <div>

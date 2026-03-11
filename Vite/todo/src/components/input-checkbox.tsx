@@ -14,17 +14,23 @@ export const inputCheckboxWrapperVariants = cva(
 export const inputCheckboxVariants = cva(
     `
         appearance-none peer flex items-center
-        justify-center border-2 border-solid transition
-        overflow-hidden border-green-base cursor-pointer
-        hover:border-green-dark hover:bg-green-dark/20
-        checked:border-green-base checked:bg-green-base
-        group-hover:checked:border-green-dark
-        group-hover:checked:bg-green-dark
+        justify-center transition
+        overflow-hidden
     `,
     {
         variants: {
             variant: {
-                default:
+                none:  '',
+                default:`
+                    border-2 border-solid
+                    border-green-base cursor-pointer
+                    hover:border-green-dark
+                    hover:bg-green-dark/20
+                    checked:border-green-base
+                    checked:bg-green-base
+                    group-hover:checked:border-green-dark
+                    group-hover:checked:bg-green-dark
+                `
             },
 
             size: {
@@ -35,6 +41,7 @@ export const inputCheckboxVariants = cva(
             }
         },
         defaultVariants: {
+            variant: 'default',
             size: 'md',
             disabled: false,
         }
@@ -66,6 +73,7 @@ interface InputCheckboxProps
 
 
 export const InputCheckbox = ({
+    variant,
     size,
     disabled,
     className,
@@ -76,7 +84,8 @@ export const InputCheckbox = ({
     if(loading){
         return(
             <Skeleton
-
+                rounded={'sm'}
+                className={inputCheckboxVariants({size, variant: 'none'})}
             />
         )
     }
@@ -85,7 +94,7 @@ export const InputCheckbox = ({
         <label className={inputCheckboxWrapperVariants({className})}>
             <input
                 type="checkbox"
-                className={inputCheckboxVariants({size, disabled})}
+                className={inputCheckboxVariants({variant, size, disabled})}
                 {...props}
             />
             <Icon
