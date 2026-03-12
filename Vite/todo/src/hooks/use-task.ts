@@ -15,7 +15,17 @@ export const useTask = () => {
 		]);
 	};
 
-	return { 
-        prepareTask 
-    };
+	const updateTask = (id: string, playload: { title: Task["title"] }) => {
+		setTasks(
+			tasks.map((task) =>
+				task.id === id
+					? { ...task, state: TaskState.Created, ...playload }
+					: task,
+			),
+		);
+	};
+
+	return {
+		prepareTask, updateTask
+	};
 };

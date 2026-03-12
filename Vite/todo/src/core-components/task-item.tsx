@@ -9,6 +9,7 @@ import { Card } from "../components/card";
 import { InputCheckbox } from "../components/input-checkbox";
 import { InputText } from "../components/input-text";
 import Text from "../components/text";
+import { useTask } from "../hooks/use-task";
 import { type Task, TaskState } from "../models/task";
 
 interface TaskItemProps {
@@ -21,6 +22,7 @@ export const TaskItem = ({ task }: TaskItemProps) => {
 	);
 
 	const [taskTitle, setTaskTitle] = React.useState("");
+	const { updateTask } = useTask();
 
 	const handleEditTask = () => {
 		setIsEditing(true);
@@ -37,6 +39,7 @@ export const TaskItem = ({ task }: TaskItemProps) => {
 	const handleSaveTask = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		console.log({ id: task.id, title: taskTitle });
+		updateTask(task.id, { title: taskTitle });
 		setIsEditing(false);
 	};
 
