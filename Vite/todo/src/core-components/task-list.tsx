@@ -22,7 +22,10 @@ export const TaskList = () => {
 					icon={PlusIcon}
 					className="w-full"
 					onClick={handleNewTask}
-					disabled={tasks.some((task) => task.state === TaskState.Creating)}
+					disabled={
+						tasks.some((task) => task.state === TaskState.Creating) ||
+						isLoadingTasks
+					}
 				>
 					Nova Tarefa
 				</Button>
