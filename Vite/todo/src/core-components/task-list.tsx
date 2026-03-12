@@ -22,7 +22,9 @@ export const TaskList = () => {
 				</Button>
 			</section>
 			<section className="space-y-2">
-				<TaskItem />
+				{tasks.map((task) => (
+					<TaskItem key={task.id} task={task} />
+				))}
 			</section>
 		</>
 	);

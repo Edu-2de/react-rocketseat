@@ -8,8 +8,13 @@ import { Card } from "../components/card";
 import { InputCheckbox } from "../components/input-checkbox";
 import { InputText } from "../components/input-text";
 import Text from "../components/text";
+import type { Task } from "../models/task";
 
-export const TaskItem = () => {
+interface TaskItemProps {
+	task: Task;
+}
+
+export const TaskItem = ({ task }: TaskItemProps) => {
 	const [isEditing, setIsEditing] = React.useState(false);
 
 	const handlingEditTask = () => {
@@ -24,8 +29,11 @@ export const TaskItem = () => {
 		<Card size="md" className="flex items-center gap-4">
 			{!isEditing ? (
 				<>
-					<InputCheckbox />
-					<Text className="flex-1">Fazer compras da semana</Text>
+					<InputCheckbox
+						value={task.concluded?.toString()}
+						checked={task?.concluded}
+					/>
+					<Text className="flex-1">{task?.title}</Text>
 					<div className="flex gap-1">
 						<ButtonIcon icon={TrashIcon} variant="tertiary" />
 						<ButtonIcon
