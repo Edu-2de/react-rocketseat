@@ -1,15 +1,15 @@
 import { NavLink, Outlet } from "react-router";
 import Text from "../components/text";
 import { Header } from "../core-components/header";
+import { MainContent } from "../core-components/main-content";
 
 export const LayoutMain = () => {
 	return (
 		<>
 			<Header />
-			<main className="mt-4 md:mt-8">
+			<MainContent>
 				<Outlet />
-			</main>
-
+			</MainContent>
 			<footer className="my-5 md:my-10">
 				<nav className="flex items-center justify-center gap-4">
 					<NavLink to="/">
@@ -17,7 +17,6 @@ export const LayoutMain = () => {
 							Tarefas
 						</Text>
 					</NavLink>
-
 					<NavLink to="/components">
 						<Text variant="body-sm-bold" className="text-gray-300">
 							Componentes
