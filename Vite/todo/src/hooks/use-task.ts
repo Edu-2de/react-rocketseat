@@ -1,0 +1,21 @@
+import useLocalStorage from "use-local-storage";
+import { TASK_KEY, type Task, TaskState } from "../models/task";
+
+export const useTask = () => {
+	const [tasks, setTasks] = useLocalStorage<Task[]>(TASK_KEY, []);
+
+	const prepareTask = () => {
+		setTasks([
+			...tasks,
+			{
+				id: Math.random().toString(36).substring(2, 9),
+				title: "",
+				state: TaskState.Creating,
+			},
+		]);
+	};
+
+	return { 
+        prepareTask 
+    };
+};
