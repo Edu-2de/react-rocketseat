@@ -29,7 +29,9 @@ export const TaskItem = ({ task }: TaskItemProps) => {
 	};
 
 	const handleExitEditTask = () => {
-		
+		if(task.state === TaskState.Creating){
+			deleteTask(task.id)
+		}
 
 		setIsEditing(false);
 	};

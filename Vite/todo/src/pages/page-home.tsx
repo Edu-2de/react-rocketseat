@@ -1,6 +1,6 @@
 import { Container } from "../components/container";
 import { TaskList } from "../core-components/task-list";
-import { TaskSummary } from "../core-components/text-summary";
+import { TaskSummary } from "../core-components/task-summary";
 
 export const PageHome = () => {
 	return (
