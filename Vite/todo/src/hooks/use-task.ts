@@ -1,8 +1,11 @@
+import React from "react";
 import useLocalStorage from "use-local-storage";
+import { delay } from "../helpers/utils";
 import { TASK_KEY, type Task, TaskState } from "../models/task";
 
 export const useTask = () => {
 	const [tasks, setTasks] = useLocalStorage<Task[]>(TASK_KEY, []);
+	const [isUpdatingTask, setIsUpdatingTask] = React.useState(false);
 
 	const prepareTask = () => {
 		setTasks([
@@ -25,10 +28,16 @@ export const useTask = () => {
 		);
 	};
 
-	const updateTaskStatus = (id: string, concluded: boolean) => {
+	const updateTaskStatus = async (id: string, concluded: boolean) => {
+		setIsUpdatingTask(true);
+
+		await delay(1000);
+
 		setTasks(
 			tasks.map((task) => (task.id === id ? { ...task, concluded } : task)),
 		);
+
+		setIsUpdatingTask(false);
 	};
 
 	const deleteTask = (id: string) => {
@@ -39,6 +48,7 @@ export const useTask = () => {
 		prepareTask,
 		updateTask,
 		updateTaskStatus,
-		deleteTask
+		deleteTask,
+		isUpdatingTask,
 	};
 };
