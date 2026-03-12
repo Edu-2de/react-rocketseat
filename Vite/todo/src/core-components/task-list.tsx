@@ -6,7 +6,9 @@ export const TaskList = () => {
 	return (
 		<>
 			<section>
-				<Button icon={PlusIcon}>Nova Tarefa</Button>
+				<Button icon={PlusIcon} className="w-full">
+					Nova Tarefa
+				</Button>
 			</section>
 			<section className="space-y-2">
 				<TaskItem />
