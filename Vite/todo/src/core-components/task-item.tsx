@@ -8,15 +8,17 @@ import { ButtonIcon } from "../components/button-icon";
 import { Card } from "../components/card";
 import { InputCheckbox } from "../components/input-checkbox";
 import { InputText } from "../components/input-text";
+import { Skeleton } from "../components/skeleton";
 import Text from "../components/text";
 import { useTask } from "../hooks/use-task";
 import { type Task, TaskState } from "../models/task";
 
 interface TaskItemProps {
 	task: Task;
+	loading?: boolean;
 }
 
-export const TaskItem = ({ task }: TaskItemProps) => {
+export const TaskItem = ({ task, loading }: TaskItemProps) => {
 	const [isEditing, setIsEditing] = React.useState(
 		task?.state === TaskState.Creating,
 	);
@@ -29,8 +31,8 @@ export const TaskItem = ({ task }: TaskItemProps) => {
 	};
 
 	const handleExitEditTask = () => {
-		if(task.state === TaskState.Creating){
-			deleteTask(task.id)
+		if (task.state === TaskState.Creating) {
+			deleteTask(task.id);
 		}
 
 		setIsEditing(false);
@@ -65,26 +67,33 @@ export const TaskItem = ({ task }: TaskItemProps) => {
 					<InputCheckbox
 						checked={task?.concluded}
 						onChange={handleChangeTaskStatus}
+						loading={loading}
 					/>
-					<Text
-						className={cx("flex-1", {
-							"line-through": task?.concluded,
-						})}
-					>
-						{task?.title}
-					</Text>
+					{!loading ? (
+						<Text
+							className={cx("flex-1", {
+								"line-through": task?.concluded,
+							})}
+						>
+							{task?.title}
+						</Text>
+					) : (
+						<Skeleton className="h-6 flex-1" />
+					)}
 					<div className="flex gap-1">
 						<ButtonIcon
 							onClick={handleDeleteTask}
 							icon={TrashIcon}
 							variant="tertiary"
 							type="button"
+							loading={loading}
 						/>
 						<ButtonIcon
 							onClick={handleEditTask}
 							icon={PencilIcon}
 							variant="tertiary"
 							type="button"
+							loading={loading}
 						/>
 					</div>
 				</div>

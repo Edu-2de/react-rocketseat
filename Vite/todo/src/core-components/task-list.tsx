@@ -2,11 +2,11 @@ import PlusIcon from "../assets/icons/Plus.svg?react";
 import { Button } from "../components/button";
 import { useTask } from "../hooks/use-task";
 import { useTasks } from "../hooks/use-tasks";
-import { TaskState } from "../models/task";
+import { type Task, TaskState } from "../models/task";
 import { TaskItem } from "./task-item";
 
 export const TaskList = () => {
-	const { tasks } = useTasks();
+	const { tasks, isLoadingTasks } = useTasks();
 	const { prepareTask } = useTask();
 
 	console.log(tasks);
@@ -28,9 +28,15 @@ export const TaskList = () => {
 				</Button>
 			</section>
 			<section className="space-y-2">
-				{tasks.map((task) => (
-					<TaskItem key={task.id} task={task} />
-				))}
+				{!isLoadingTasks &&
+					tasks.map((task) => <TaskItem key={task.id} task={task} />)}
+				{isLoadingTasks && (
+					<>
+						<TaskItem task={{} as Task} loading />
+						<TaskItem task={{} as Task} loading />
+						<TaskItem task={{} as Task} loading />
+					</>
+				)}
 			</section>
 		</>
 	);

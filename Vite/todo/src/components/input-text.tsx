@@ -1,45 +1,47 @@
-import React from "react";
-import { cva, type VariantProps, cx } from "class-variance-authority";
+import { cva, cx, type VariantProps } from "class-variance-authority";
+import type React from "react";
 import { textVariants } from "./text.variants";
 
-
-export const inputTextVariants = cva(`
+export const inputTextVariants = cva(
+	`
     border-b border-solid border-gray-200 focus:border-pink-base
     bg-transparent outline-none
-`, {
-    variants: {
-        size: {
-            md: 'pb-2 px-2'
-        },
-        disabled: {
-            true: 'pointer-events-none'
-        }
-    },
-    defaultVariants: {
-        size: 'md',
-        disabled: false,
-    }
-})
+    `,
+	{
+		variants: {
+			size: {
+				md: "pb-2 px-2",
+			},
+			disabled: {
+				true: "pointer-events-none",
+			},
+		},
+		defaultVariants: {
+			size: "md",
+			disabled: false,
+		},
+	},
+);
 
-interface InputTextProps extends VariantProps<typeof inputTextVariants>,
-    Omit<React.ComponentProps<'input'>, 'size' | 'disabled'> {}
-
+interface InputTextProps
+	extends VariantProps<typeof inputTextVariants>,
+		Omit<React.ComponentProps<"input">, "size" | "disabled"> {}
 
 export const InputText = ({
-    size,
-    disabled,
-    className,
-    ...props
+	size,
+	disabled,
+	className,
+	...props
 }: InputTextProps) => {
-    return(
-        <input
-            className={cx(
-                inputTextVariants({size,disabled,}),
-                textVariants(),
-                className
-            )}
-            type="text"
-            {...props}
-            />
-    )
-}
+	return (
+		<input
+			className={cx(
+				inputTextVariants({ size, disabled }),
+				textVariants(),
+				className,
+			)}
+			type="text"
+			{...props}
+		/>
+	);
+};
