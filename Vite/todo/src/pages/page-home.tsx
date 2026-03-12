@@ -1,13 +1,12 @@
-import { Container } from "../components/container"
-
+import { Container } from "../components/container";
+import { TaskSummary } from "../core-components/text-summary";
 
 export const PageHome = () => {
-    return(
-        <>
-            <Container>
-                Página Home
-            </Container>
-
-        </>
-    )
-}
+	return (
+		<Container as="article" className="space-y-3">
+			<header className="flex items-center justify-between">
+				<TaskSummary />
+			</header>
+		</Container>
+	);
+};
