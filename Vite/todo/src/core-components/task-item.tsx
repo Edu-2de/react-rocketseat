@@ -22,13 +22,15 @@ export const TaskItem = ({ task }: TaskItemProps) => {
 	);
 
 	const [taskTitle, setTaskTitle] = React.useState(task.title || "");
-	const { updateTask, updateTaskStatus } = useTask();
+	const { updateTask, updateTaskStatus, deleteTask } = useTask();
 
 	const handleEditTask = () => {
 		setIsEditing(true);
 	};
 
 	const handleExitEditTask = () => {
+		
+
 		setIsEditing(false);
 	};
 
@@ -39,6 +41,7 @@ export const TaskItem = ({ task }: TaskItemProps) => {
 	const handleSaveTask = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		console.log({ id: task.id, title: taskTitle });
+
 		updateTask(task.id, { title: taskTitle });
 		setIsEditing(false);
 	};
@@ -47,6 +50,10 @@ export const TaskItem = ({ task }: TaskItemProps) => {
 		const checked = e.target.checked;
 		console.log(checked);
 		updateTaskStatus(task.id, checked);
+	};
+
+	const handleDeleteTask = () => {
+		deleteTask(task.id);
 	};
 
 	return (
@@ -65,7 +72,12 @@ export const TaskItem = ({ task }: TaskItemProps) => {
 						{task?.title}
 					</Text>
 					<div className="flex gap-1">
-						<ButtonIcon icon={TrashIcon} variant="tertiary" type="button" />
+						<ButtonIcon
+							onClick={handleDeleteTask}
+							icon={TrashIcon}
+							variant="tertiary"
+							type="button"
+						/>
 						<ButtonIcon
 							onClick={handleEditTask}
 							icon={PencilIcon}
