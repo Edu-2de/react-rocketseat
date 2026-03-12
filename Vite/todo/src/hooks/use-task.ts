@@ -25,7 +25,15 @@ export const useTask = () => {
 		);
 	};
 
+	const updateTaskStatus = (id: string, concluded: boolean) => {
+		setTasks(
+			tasks.map((task) => (task.id === id ? { ...task, concluded } : task)),
+		);
+	};
+
 	return {
-		prepareTask, updateTask
+		prepareTask,
+		updateTask,
+		updateTaskStatus,
 	};
 };

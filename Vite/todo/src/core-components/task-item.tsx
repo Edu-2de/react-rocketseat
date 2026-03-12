@@ -21,8 +21,8 @@ export const TaskItem = ({ task }: TaskItemProps) => {
 		task?.state === TaskState.Creating,
 	);
 
-	const [taskTitle, setTaskTitle] = React.useState("");
-	const { updateTask } = useTask();
+	const [taskTitle, setTaskTitle] = React.useState(task.title || "");
+	const { updateTask, updateTaskStatus } = useTask();
 
 	const handleEditTask = () => {
 		setIsEditing(true);
@@ -43,13 +43,19 @@ export const TaskItem = ({ task }: TaskItemProps) => {
 		setIsEditing(false);
 	};
 
+	const handleChangeTaskStatus = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const checked = e.target.checked;
+		console.log(checked);
+		updateTaskStatus(task.id, checked);
+	};
+
 	return (
 		<Card size="md">
 			{!isEditing ? (
 				<div className="flex items-center gap-4">
 					<InputCheckbox
-						value={task.concluded?.toString()}
 						checked={task?.concluded}
+						onChange={handleChangeTaskStatus}
 					/>
 					<Text
 						className={cx("flex-1", {
@@ -71,6 +77,7 @@ export const TaskItem = ({ task }: TaskItemProps) => {
 			) : (
 				<form onSubmit={handleSaveTask} className="flex items-center gap-4">
 					<InputText
+						value={taskTitle}
 						className="flex-1"
 						onChange={handleChangeTaskTitle}
 						required
