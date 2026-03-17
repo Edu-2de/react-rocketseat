@@ -17,16 +17,32 @@
 
     <script type="text/babel">
       const InputFocus = () => {
+        const ref = React.useRef(null);
+
+        const handleClick = () => {
+            ref?.current?.focus();
+        };
+
         return (
           <div className="space-x-2">
-            <input className="p-2 border" placeholder="Clique no botao para focar" />
-            <button>Focar no Input</button>
+            <input
+              ref={ref}
+              className="p-2 border"
+              placeholder="Clique no botao para focar"
+            />
+            <button onClick={handleClick} className="p-2 border">
+              Focar no Input
+            </button>
           </div>
         );
       };
 
       const App = () => {
-        return <main className="p-3 spac-y-6">...</main>;
+        return (
+          <main className="p-3 spac-y-6">
+            <InputFocus />
+          </main>
+        );
       };
 
       ReactDOM.createRoot(document.getElementById("root")).render(<App />);
