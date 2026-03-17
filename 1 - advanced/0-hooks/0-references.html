@@ -20,7 +20,7 @@
         const ref = React.useRef(null);
 
         const handleClick = () => {
-            ref?.current?.focus();
+          ref?.current?.focus();
         };
 
         return (
@@ -37,10 +37,28 @@
         );
       };
 
+      const ScrollTracker = () => {
+        return (
+          <div className="space-y-4">
+            <div className="border border-solid border-blue-500 p-4 h-60 overflow-y-auto">
+              <div className="space-y-4">
+                {Array.from({ length: 20 }).map((_, index) => (
+                  <p key={index} className="p-2 bg-gray-100 rounded">
+                    Item do conteudo {index + 1}
+                  </p>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+      };
+
       const App = () => {
         return (
-          <main className="p-3 spac-y-6">
+          <main className="p-3 space-y-6">
             <InputFocus />
+            <hr />
+            <ScrollTracker />
           </main>
         );
       };
