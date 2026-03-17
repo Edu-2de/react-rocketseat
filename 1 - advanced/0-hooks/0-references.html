@@ -44,10 +44,17 @@
               <div className="space-y-4">
                 {Array.from({ length: 20 }).map((_, index) => (
                   <p key={index} className="p-2 bg-gray-100 rounded">
-                    Item do conteudo {index + 1}
+                    Item do coneudo {index + 1}
                   </p>
                 ))}
               </div>
+            </div>
+
+            <div className="space-y-2">
+              <ul className="space-y-2 list-disc pl-5">
+                <li>Progresso do scroll: </li>
+                <li>Onde esta o scroll: {scrollTop} </li>
+              </ul>
             </div>
           </div>
         );
