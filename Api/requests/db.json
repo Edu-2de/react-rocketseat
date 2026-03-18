@@ -2,7 +2,8 @@
     "users": [
         {
             "id": 1,
-            "name": "Gus"
+            "name": "gustavo",
+            "username": "GUs"
         }
     ],
     "$schema": "./node_modules/json-server/schema.json"
