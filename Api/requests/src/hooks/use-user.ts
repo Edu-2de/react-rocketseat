@@ -9,7 +9,7 @@ export default function useUser() {
         "idle" | "loading" | "saving"
     >("idle");
 
-    const getUser = React.useCallback(async (usernameId: number) => {
+    const getUser = React.useCallback(async (usernameId: string) => {
         try {
             setRequestStatus("loading");
 

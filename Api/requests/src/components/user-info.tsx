@@ -5,7 +5,7 @@ export default function UserInfo() {
     const { user, userRequestStatus, getUser } = useUser();
 
     React.useEffect(() => {
-        getUser(1);
+        getUser("Gus");
     }, [getUser]);
 
     if (userRequestStatus === "loading") {
@@ -14,8 +14,8 @@ export default function UserInfo() {
 
     return (
         <ul>
+            <li>Username: {user?.id} </li>
             <li>Nome: {user?.name}</li>
-            <li>Username: {user?.username} </li>
         </ul>
     );
 }
