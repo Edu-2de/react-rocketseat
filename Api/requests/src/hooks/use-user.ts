@@ -9,15 +9,15 @@ export default function useUser() {
         "idle" | "loading" | "saving"
     >("idle");
 
-    const getUser = React.useCallback(async (usernameId: string) => {
+    const getUser = React.useCallback(async (username: string) => {
         try {
             setRequestStatus("loading");
 
-            const data = await fetcher(`/users/${usernameId}`);
+            const data = await fetcher(`/users/${username}`);
             setUser(data);
         } catch (e) {
             console.error(e);
-            alert("Erro ao buscar usuario");
+            alert("Erro ao buscar usuário");
         } finally {
             setRequestStatus("idle");
         }
@@ -32,10 +32,10 @@ export default function useUser() {
                 body: JSON.stringify(payload),
             });
 
-            alert("Usuario criado com sucesso");
+            alert("Usuário criado com sucesso");
         } catch (e) {
             console.error(e);
-            alert("Erro ao criar o usuario");
+            alert("Err ao criar o usuário");
         } finally {
             setRequestStatus("idle");
         }
