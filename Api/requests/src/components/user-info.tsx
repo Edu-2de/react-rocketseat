@@ -9,7 +9,7 @@ export default function UserInfo() {
     }, [getUser]);
 
     if (userRequestStatus === "loading") {
-        return <div> Carregando usuario... </div>;
+        return <div> Carregando usuário... </div>;
     }
 
     return (
